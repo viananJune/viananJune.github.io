@@ -1,1 +1,1 @@
-### recoluan's blog [website](https://recoluan.gitlab.io)
+# 个人博客
