@@ -2,8 +2,8 @@ const themeConfig = require('./config/theme/')
 
 module.exports = {
   base: '/blog/',
-  title: "面朝大海，春暖花开",
-  description: 'Enjoy when you can, and endure when you must.',
+  title: "面朝大海 春暖花开",
+  description: '愿你有一个灿烂的前程   愿你有情人终成眷属   愿你在尘世获得幸福',
   dest: 'docs/.vuepress/dist',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],

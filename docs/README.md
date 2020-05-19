@@ -15,7 +15,7 @@ heroImageStyle: {
 }
 isShowTitleInHome: false
 actionText: About Me
-actionLink: /views/personalInfo/
+actionLink: /views/about/
 features:
 - title: Who am I？
   details: A programmer? A human being? Or a matter combination?
