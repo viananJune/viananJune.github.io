@@ -1,5 +1,9 @@
 module.exports = {
   type: 'blog',
+  fullscreen: true,
+  mode: 'light',
+  authorAvatar: '/head.jpg',
+  logo: '/head.jpg',
   // 博客设置
   blogConfig: {
     category: {
@@ -11,12 +15,17 @@ module.exports = {
       text: 'Tag' // 默认 “标签”
     }
   },
+  markdown: {
+    lineNumbers: true, //代码显示行号
+  },
   // 最后更新时间
   lastUpdated: 'Last Updated', // string | boolean
   // 作者
-  author: 'reco_luan',
+  author: 'Qiu Zhongrun',
   // 备案号
-  record: '京ICP备17067634号-1',
+  record: '5163406',
   // 项目开始时间
-  startYear: '2017'
+  startYear: '2020',
+  search: true,
+  searchMaxSuggestions: 10,
 }
