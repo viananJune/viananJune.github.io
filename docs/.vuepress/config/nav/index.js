@@ -4,7 +4,7 @@ module.exports = [
   { text: 'Contact', 
     icon: 'reco-message',
     items: [
-      { text: 'About', link: '/views/about', icon: 'reco-account' },
+      { text: 'About', link: '/views/about/', icon: 'reco-account' },
       { text: 'GitHub', link: 'https://github.com/qiuzhongrun/blog', icon: 'reco-github' },
     ]
   }
