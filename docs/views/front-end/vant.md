@@ -29,7 +29,7 @@ npm i babel-plugin-import -D
 # 启动
 yarn serve
 ```
-![默认首页截图.jpg](./../../images/vant-index.jpg)
+![默认首页截图.jpg](./../images/vant-index.jpg)
 但是，还缺少路由模块。
 
 ## 路由模块
@@ -86,7 +86,7 @@ new Vue({
   </div>
 </template>
 ```
-![Test页面访问截图.jpg](./../../images/vant-test.jpg)
+![Test页面访问截图.jpg](./../images/vant-test.jpg)
 
 参考
 1. [Vant官方QuickStart](https://youzan.github.io/vant/#/zh-CN/quickstart)

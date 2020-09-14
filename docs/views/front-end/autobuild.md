@@ -38,7 +38,7 @@ st->op_github_repo->op_vuepress_project->op_hook->op_ci->e
 下面主要讲一下关于Github Pages配置的区别：project → Settings → GitHub Pages
 ### User or organization site
 以个人或者组织的角度，全新创建一个<span style="color: red;">github.io</span>为结尾的github工程。注意前面红色的字，如果你一旦以<span style="color: red;">github.io</span>为结尾创建工程，然后你会惊奇地发现Github Pages配置时无法选择展示的Source了。
-![github_pages_config.jpg](./../../images/github_pages_config.jpg)
+![github_pages_config.jpg](./../images/github_pages_config.jpg)
 这个意思是说以后你去访问https://username.github.io/blog访问到的只能是master分支的内容，这会带出一个很棘手的问题：“为何我什么都配置了，最后只能显示master代码分支的README.md文件，不是预期的gh-pages分支里的静态文件?”。
 
 解决的办法也有，那就是顺着它的思路，使用mater分支当做build后静态资源存放的分支，代码分支放到别处去。参考[拯救懒癌文档君 - VuePress + Travis CI + Github Pages 自动线上生成文档](https://juejin.im/post/5d0715f6f265da1ba56b1e01),我被伤到了，这种方案我就不细说了。
@@ -48,7 +48,7 @@ st->op_github_repo->op_vuepress_project->op_hook->op_ci->e
 
 ### project-site
 以工程的角度来创建一个专门展示工程，这里就可以选择分支了。切记工程名不要是<span style="color: red;">github.io</span>为结尾。
-![github_pages_config.jpg](./../../images/github_pages_config2.jpg)
+![github_pages_config.jpg](./../images/github_pages_config2.jpg)
 gh-pages分支是Github Pages约好的分支，这个后面travis-ci推送的时候会自动创建。这个方式不单只可以创建新的工程的时候适用，老工程也同样适用。
 ::: warning
 这种方式的工程在Github Pages配置的时候，不要选择主题，因为我们用的是vuepress的主题。
