@@ -394,10 +394,234 @@ if (a[e1] != a[e2] && a[e2] != a[e3] && a[e3] != a[e4] && a[e4] != a[e5]) {
 else分支里的单轴快排直接选择中间那个数来做轴点，划分好后，前后段分别递归调用，此处不表。
 
 ## ComparableTimSort.sort
+这种算法特点在于先判断是否有连续的升序或者降序，再行分段插入，避免了之前归并算法对某些特定场景的无力感。
 
+### 1、探测连续有序
+``` java
+// 如果数组太小(<32)，就直接做个"mini-TimSort"，请注意，这里采用的不再是归并算法了，而是插入算法
+if (nRemaining < MIN_MERGE) {
+    int initRunLen = countRunAndMakeAscending(a, lo, hi);
+    binarySort(a, lo, hi, lo + initRunLen);
+    return;
+}
+```
+*countRunAndMakeAscending*一看名字就知道是探测有序的，Ascending是升序的意思。
+``` java
+private static int countRunAndMakeAscending(Object[] a, int lo, int hi) {
+    assert lo < hi;
+    int runHi = lo + 1;
+    if (runHi == hi)
+        return 1;
+
+    // Find end of run, and reverse range if descending
+    if (((Comparable) a[runHi++]).compareTo(a[lo]) < 0) { // Descending
+        while (runHi < hi && ((Comparable) a[runHi]).compareTo(a[runHi - 1]) < 0)
+            runHi++;
+        reverseRange(a, lo, runHi);
+    } else {                              // Ascending
+        while (runHi < hi && ((Comparable) a[runHi]).compareTo(a[runHi - 1]) >= 0)
+            runHi++;
+    }
+
+    return runHi - lo;
+}
+```
+查看代码可知，就是查找连续升序或者连续降序，如果连续降序，还会逆转后再返回。
+
+### 2、分段归并
+``` java
+/**
+ * March over the array once, left to right, finding natural runs,
+ * extending short natural runs to minRun elements, and merging runs
+ * to maintain stack invariant.
+ */
+ComparableTimSort ts = new ComparableTimSort(a, work, workBase, workLen);
+int minRun = minRunLength(nRemaining);//这个就是确定分段的长度，如果nRemaining<32,返回值直接就是nRemaining，否则不是16就是17
+do {
+    // 探测有序
+    int runLen = countRunAndMakeAscending(a, lo, hi);
+
+    // 就排这一小段，用二分插入法。 除非全部有序，否则都得这么先处理一下
+    if (runLen < minRun) {
+        int force = nRemaining <= minRun ? nRemaining : minRun;
+        binarySort(a, lo, lo + force, lo + runLen);
+        runLen = force;
+    }
+
+    // 放入栈中，其实就是记录一下位置
+    ts.pushRun(lo, runLen);
+    ts.mergeCollapse();//判断是否需要进行归并
+
+    // 处理下一段
+    lo += runLen;
+    nRemaining -= runLen;
+} while (nRemaining != 0);
+
+// Merge all remaining runs to complete sort
+assert lo == hi;
+ts.mergeForceCollapse(); //这里会强制做归并
+assert ts.stackSize == 1;
+
+```
+看完上面的主流程代码，可以发现关键在于三个地方：
+a. ComparableTimSort的结构
+b. ComparableTimSort.pushRun方法
+c. ComparableTimSort.mergeCollapse方法
+我们下面一一去看一下他们各自的代码。
+
+### 3、ComparableTimSort的结构
+ComparableTimSort类开篇明义地讲了它就是TimSort类的翻版，在优化了的VM上性能上不会有任何优势。两者的区别在于ComparableTimSort要求你传入的对象是可比较的，而TimSort则需要传入一个Comparator来对对象进行比较。
+
+下面是ComparableTimSort的结构
+``` java
+/**
+ * 最小归并单元，小于它的将进行二分插入排序。
+ */
+private static final int MIN_MERGE = 32;
+
+/**
+ * 存储被排序对象集合的地方.
+ */
+private final Object[] a;
+
+/**
+ * 驰振模式下的默认最小长度
+ */
+private static final int  MIN_GALLOP = 7;
+
+/**
+ * 驰振模式下的最小长度，默认是MIN_GALLOP
+ */
+private int minGallop = MIN_GALLOP;
+
+/**
+ * 最大初始化临时空间长度，用于归并。
+ */
+private static final int INITIAL_TMP_STORAGE_LENGTH = 256;
+
+/**
+ * 用于归并的临时存储空间，初始化的时候设置
+ */
+private Object[] tmp;
+private int tmpBase; 
+private int tmpLen;
+
+/**
+ * 构建的一个堆栈，存储即将用于归并的元素。有以下规律:
+ *     runBase[i] + runLen[i] == runBase[i + 1]
+ */
+private int stackSize = 0;  // Number of pending runs on stack
+private final int[] runBase;
+private final int[] runLen;
+```
+
+### 4、ComparableTimSort.pushRun方法
+``` java
+    /**
+     * Pushes the specified run onto the pending-run stack.
+     *
+     * @param runBase index of the first element in the run
+     * @param runLen  the number of elements in the run
+     */
+    private void pushRun(int runBase, int runLen) {
+        this.runBase[stackSize] = runBase;
+        this.runLen[stackSize] = runLen;
+        stackSize++;
+    }
+```
+这个方法看不出端倪，只是一些标记动作。这里的runBase其实就是起始位，runLen就是处理的长度。把一段段已经拼接好的元素放好，稍后按段归并。
+
+### 5、ComparableTimSort.mergeCollapse方法
+``` java
+    /**
+     * Examines the stack of runs waiting to be merged and merges adjacent runs
+     * until the stack invariants are reestablished:
+     *
+     *     1. runLen[i - 3] > runLen[i - 2] + runLen[i - 1]
+     *     2. runLen[i - 2] > runLen[i - 1]
+     *
+     * This method is called each time a new run is pushed onto the stack,
+     * so the invariants are guaranteed to hold for i < stackSize upon
+     * entry to the method.
+     */
+    private void mergeCollapse() {
+        while (stackSize > 1) {
+            int n = stackSize - 2;
+            if (n > 0 && runLen[n-1] <= runLen[n] + runLen[n+1]) {
+                if (runLen[n - 1] < runLen[n + 1])
+                    n--;
+                mergeAt(n);
+            } else if (runLen[n] <= runLen[n + 1]) {
+                mergeAt(n);
+            } else {
+                break; // Invariant is established
+            }
+        }
+    }
+```
+规定了两种情况下会立刻进行归并。为了便于理解，我把stackSize的值设置为4，也就是有4组已经分段了的元素。下标为：0 1 2 3，mergeAt默认传1。
+1. runLen[1] > runLen[2] + runLen[3]，并且如果runLen[1] < runLen[3]，mergeAt传0
+2. runLen[2] > runLen[3]
+为何对倒数第3、2、1个数进行比较，这个得看mergeAt函数了。
+至此还是没有真正的进行归并，所以mergeAt函数至关重要，必须读一读
+
+### 6、ComparableTimSort.mergeAt方法
+``` java
+    private void mergeAt(int i) {
+        assert stackSize >= 2;
+        assert i >= 0;
+        assert i == stackSize - 2 || i == stackSize - 3;
+
+        int base1 = runBase[i];
+        int len1 = runLen[i];
+        int base2 = runBase[i + 1];
+        int len2 = runLen[i + 1];
+        assert len1 > 0 && len2 > 0;
+        assert base1 + len1 == base2;
+
+        /*
+         * 合并分段;注意如果是倒数第三个，还需要把最后那个往前移
+         */
+        runLen[i] = len1 + len2;
+        if (i == stackSize - 3) {
+            runBase[i + 1] = runBase[i + 2];
+            runLen[i + 1] = runLen[i + 2];
+        }
+        stackSize--;
+
+        /*
+         * 请注意，这里的分段，全部都是有序了的。
+         * 这段代码是找出2段第一个元素在1段的位置。
+         */
+        int k = gallopRight((Comparable<Object>) a[base2], a, base1, len1, 0);
+        assert k >= 0;
+        base1 += k;
+        len1 -= k;
+        if (len1 == 0)
+            return;
+
+        /*
+         * 这段代码是找出1段中最后一个元素在2段中的位置
+         */
+        len2 = gallopLeft((Comparable<Object>) a[base1 + len1 - 1], a,
+                base2, len2, len2 - 1);
+        assert len2 >= 0;
+        if (len2 == 0)
+            return;
+
+        // 把剩下中间那部分合并一下
+        if (len1 <= len2)
+            mergeLo(base1, len1, base2, len2);
+        else
+            mergeHi(base1, len1, base2, len2);
+    }
+```
+处处显示出优化的味道。
 
 参考：
 1. [快速排序算法原理及实现（单轴快速排序、三向切分快速排序、双轴快速排序）](https://blog.csdn.net/hrbeuwhw/article/details/79476890)
+2. [java.util.ComparableTimSort中的sort()方法简单分析](https://blog.csdn.net/bruce_6/article/details/38299199)
+3. [MergeSort与TimSort，ComparableTimSort](https://blog.csdn.net/sinat_34976604/article/details/80970949)
 
 
 
