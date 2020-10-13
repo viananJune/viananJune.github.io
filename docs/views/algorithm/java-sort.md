@@ -54,6 +54,11 @@ public static void sort(Object[] a) {
 
 好了，作为一个喷子，一定要注意看的是什么人的代码再喷。这是jdk源码，放尊重点！
 
+::: warning
+[Why Is Dual-Pivot Quicksort Fast?](https://arxiv.org/pdf/1511.01138.pdf)
+:::
+
+
 ## 双轴快排
 我们进入**DualPivotQuicksort**.*sort*的源码，看到类头部注释的大意是，这个双轴快排是由Vladimir Yaroslavskiy, Jon Bentley, 和Josh Bloch三位大神写出来的，在n多数据集的测试下，都能提供O(nlog(n))的效率，而不会像其他快排一样遇到极端的情况导致性能降级。它的性能明显好于传统的单轴快排。
 ![really.png](./../images/really.png)
