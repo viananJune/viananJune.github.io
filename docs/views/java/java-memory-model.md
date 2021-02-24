@@ -1,30 +1,18 @@
 ---
-title: Java Sort
-date: 2020-09-05
+title: Java Memory Model
+date: 2021-02-24
 tags:
  - java
- - sort
+ - jvm
+ - 内存模型
 categories:
  - algorithm
 sidebar: false
 ---
-最近在看排序算法，冒泡排序、选择排序、插入排序、希尔排序、归并排序、快速排序、堆排序、计数排序、桶排序、基数排序。
-[十大经典排序算法（动图演示）](https://www.cnblogs.com/onepixel/p/7674659.html)，挺有意思的。
+这里讨论的Java内存模型是一个广义的概念，分为两部分，一部分是JVM存储内存模型，另一部分是Java多线程内存模型。前者和数据存储相关，后者主要和多线程相关。
 
-![十大排序算法分析图.jpg](./../../images/ten-algorithm-analysis.png)
+# JVM存储内存模型
 
-我觉得我需要get√到以下几点：
-::: tip
-1. 插入排序在数量小、基本有序的时候，速度杠杠的
-2. 杂乱无章的数据，快排拥有惊人效率
-3. 基本有序的情况下，归并比快排快
-4. 算法是可以优化的
-5. 算法是有局限性的
-:::
-
-作为一名目前还是靠Java吃饭的码农，不由自主地将目光瞄进了JDK源码。Java的排序是怎么样的呢？以Java8为例。
-
-# Java的排序
 JDK源码中的排序算法主要是在Arrays中入口，Collections的排序其实也是调用的Arrays的，所以我们看Arrays的好了。它有这么多个重载方法，是为了针对不同的传入对象。
 
 ![Arrays.sort.jpg](./../../images/Arrays.sort.jpg)
