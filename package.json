@@ -13,7 +13,7 @@
     "start": "nodemon --ext md,vue --watch .vuepress --watch . --exec vuepress dev docs"
   },
   "dependencies": {
-    "@vuepress/plugin-medium-zoom": "1.0.0-alpha.0",
+    "@vuepress/plugin-medium-zoom": "^1.8.2",
     "@vuepress/plugin-pwa": "1.0.0-alpha.3",
     "vuepress": "1.0.3",
     "vuepress-plugin-flowchart": "^1.4.3",
