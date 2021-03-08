@@ -5,7 +5,7 @@ tags:
  - java
  - jvm
  - memory
- - memory model
+ - model
 categories:
  - jvm
 sidebar: false

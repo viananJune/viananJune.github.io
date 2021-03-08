@@ -3,16 +3,17 @@ title: Java Stack Frame
 date: 2021-02-22
 tags:
  - java
- - program counter
+ - ProgramCounter
  - stack
- - stack frame
- - local variable
- - operand stack
+ - frame
+ - LocalVariable
+ - OperandStack
  - frame
 categories:
  - jvm
 sidebar: false
 ---
+
 栈是一个先进先出的概念，包含java虚拟机栈和本地方法栈，他们的原理是类似的。
 每一次函数的调用,都会在调用栈(call stack)上维护一个独立的栈帧(stack frame)。
 对于JVM来说，程序就是存储在方法区的字节指令码，我们所说的方法调用，就是指将方法的字节信息，形成一个栈桢，然后通过操作数栈、局部变量表、程序计数器三者结合下一步步执行函数字节命令的过程。
