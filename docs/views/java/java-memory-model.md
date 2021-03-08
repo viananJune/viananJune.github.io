@@ -1,6 +1,6 @@
 ---
 title: Java Memory Model
-date: 2021-02-25
+date: 2021-02-22
 tags:
  - java
  - jvm
@@ -53,7 +53,7 @@ JVM存储内存模型图三
 ### 1.2 Klass Metaspace
 Klass存放的是类信息，就是class文件在jvm里的运行时数据结构。这部分默认放在Compressed Class Pointer Space中，是一块连续的内存区域，
 紧接着Heap，和之前的perm一样。通过-XX:CompressedClassSpaceSize来控制这块内存的大小，默认是1G。
-下图展示了对象的存储模型，_mark是对象的Mark Word，_klass是元数据指针。
+下图展示了对象的存储模型，\_mark是对象的Mark Word，\_klass是元数据指针。
 ![compressed-class-space.jpg](./../../images/compressed-class-space.jpg)
 
 Compressed Class Pointer Space不是必须有的，如果设置了-XX:-UseCompressedClassPointers，或者-Xmx设置大于32G，就不会有这块内存，这种情况下klass都会存在NoKlass Metaspace里。
@@ -85,7 +85,7 @@ Metaspace一样会OOM的。
 ::: tip
 这里涉及到类加载器的结构和安全考虑的知识，一个类加载器的namespace涵盖它所有父加载器的namespace。
 :::
-
+更多细节和metaspace的结构，参考这篇javaloop翻译的外文[深入理解堆外内存 Metaspace](https://javadoop.com/post/metaspace)
 
 ## 2 虚拟机栈
 与程序计数器一样，Java 虚拟机栈也是线程私有的，它的生命周期和线程相同，描述的是 Java 方法执行的内存模型，每次方法调用的数据都是通过栈传递的。每个线程创建时 都会创建一个java虚拟机栈，其内部保存着一个一个栈帧（stack Frame），对应着一次次java 方法的调用。

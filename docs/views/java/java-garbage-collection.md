@@ -1,6 +1,6 @@
 ---
 title: Java Garbage Collection
-date: 2021-02-24
+date: 2021-02-22
 tags:
  - java
  - garbage
