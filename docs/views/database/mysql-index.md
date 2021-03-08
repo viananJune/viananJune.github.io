@@ -3,7 +3,7 @@ title: 程序员面试这样解题数据库索引
 date: 2021-02-28 19:00:00
 tags:
  - mysql
- - index
+ - indexing
 categories:
  - ali-interview
 sidebar: true
