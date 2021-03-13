@@ -890,10 +890,11 @@ mvcc是处理事务间写读操作的，写写操作还是得靠锁。
 ![read-view-2.png](./../../images/read-view-2.png)
 
 对于ReadView的结构，参考下图：
-![mysql-mvcc-read-visible.png](./../../images/mysql-mvcc-read-visible.png)
+
+![mysql-read-view.png](./../../images/mysql-read-view.png)
 
 我们看一段代码，来理解一下MVCC如何作用于读的可见性。
-``` c
+``` C
 // 判断数据对应的聚簇索引中的事务id在这个readview中是否可见
 bool changes_visible(
                       trx_id_t id, // 记录的id
@@ -922,7 +923,8 @@ bool changes_visible(
 }
 ```
 这个判断过程也可以用流程图加以理解：
-![mysql-read-view.png](./../../images/mysql-read-view.png)
+
+![mysql-mvcc-read-visible.png](./../../images/mysql-mvcc-read-visible.png)
 
 如果判断为不可见，那么，接下来就是要根据行数据里的隐藏字段回滚指针(DB_ROLL_PTR)去undo log日志里找它合适的数据行，此处不表。
 
