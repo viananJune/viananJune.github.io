@@ -14,8 +14,15 @@ next: ./juc-12-thread-pool-samples
 ---
 
 # 一、Spring相关
-1、Spring的MVC原理和实现
-2、Spring的IOC原理和实现，bean是如何管理起来的，以及它的生命周期
+### 1、Spring的MVC原理和实现
+Spring的Web MVC框架的DispatcherServlet的请求处理流程说明如下图：
+![spring-mvc.jpg](./../../images/spring-mvc.jpg)
+
+
+### 2、Spring的IOC原理和实现，bean是如何管理起来的，以及它的生命周期
+首先加载注解或者配置文件，形成BeanDefinition类，并将他们存入一个map，然后才到下面的流程。
+![ioc.jpg](./../../images/ioc.jpg)
+
 3、Spring的AOP原理和实现
 4、Spring AOP事务不生效有可能是什么原因
 5、jdk的aop和aspectj的aop有什么区别
@@ -77,8 +84,9 @@ org.springframework.boot.env.YamlPropertySourceLoader
 1、你们用的java版本？
 2、java8的特性你在实际工作中有用过哪些？
 3、函数式变成用的多吗？(除了lambda)
-5、jdk的动态代理涉及哪些类
-6、java怎么实现深拷贝
+4、jdk的动态代理涉及哪些类
+5、java怎么实现深拷贝
+6、java浮点数存储会损失精度，以及BigDecimal
 
 ## 内存模型
 1、java内存模型
@@ -507,3 +515,4 @@ http
 12. [MySQL可重复读隔离级别的实现原理](https://www.cnblogs.com/lmj612/p/10598971.html)
 13. [深入浅出聊一聊mysql中的事务及其实现原理](https://blog.csdn.net/a3961401/article/details/110875387)
 14. [Java面试题精选](https://mp.weixin.qq.com/s?__biz=MzIyNDU2ODA4OQ==&mid=2247485351&idx=2&sn=214225ab4345f4d9c562900cb42a52ba&scene=21#wechat_redirect)
+15. [唯品会一面：Spring 为何需要三级缓存解决循环依赖，而不是二级缓存？](https://mp.weixin.qq.com/s/u9Sm_ezjbCWrmxCZ0y0f8Q)
