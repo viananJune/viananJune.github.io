@@ -890,7 +890,7 @@ mvcc是处理事务间写读操作的，写写操作还是得靠锁。
 ![read-view-2.png](./../../images/read-view-2.png)
 
 对于ReadView的结构，参考下图：
-![mysql-mvcc-visible.png](./../../images/mysql-mvcc-visible.png)
+![mysql-mvcc-read-visible.png](./../../images/mysql-mvcc-read-visible.png)
 
 我们看一段代码，来理解一下MVCC如何作用于读的可见性。
 ``` c
