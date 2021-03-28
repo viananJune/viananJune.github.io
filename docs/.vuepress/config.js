@@ -2,8 +2,8 @@ const themeConfig = require('./config/theme/')
 
 module.exports = {
   base: '/blog/',
-  title: "面朝大海 春暖花开",
-  description: '愿你有一个灿烂的前程   愿你有情人终成眷属   愿你在尘世获得幸福',
+  title: "欢迎来到七叶的世界",
+  description: '一叶是希望,二叶是信念，三叶是祈求，四叶是幸福，五叶是幸运，六叶是浪漫，七叶是爱情',
   dest: 'docs/.vuepress/dist',
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
