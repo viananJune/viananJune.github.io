@@ -1058,6 +1058,21 @@
   optionalDependencies:
     prettier "^1.18.2"
 
+"@vuepress-reco/vuepress-plugin-bulletin-popover@^1.5.7":
+  version "1.5.7"
+  resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-bulletin-popover/download/@vuepress-reco/vuepress-plugin-bulletin-popover-1.5.7.tgz#f1f5fac56dd4ec8e2adcae33f18a1e00d6122d9b"
+  integrity sha1-8fX6xW3U7I4q3K4z8YoeANYSLZs=
+
+"@vuepress-reco/vuepress-plugin-kan-ban-niang@^1.0.5":
+  version "1.0.5"
+  resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-kan-ban-niang/download/@vuepress-reco/vuepress-plugin-kan-ban-niang-1.0.5.tgz#73b47094f1a07af05923fe9ae6c25a4c33586168"
+  integrity sha1-c7RwlPGgevBZI/6a5sJaTDNYYWg=
+
+"@vuepress-reco/vuepress-plugin-loading-page@^1.4.0":
+  version "1.6.0"
+  resolved "https://registry.npm.taobao.org/@vuepress-reco/vuepress-plugin-loading-page/download/@vuepress-reco/vuepress-plugin-loading-page-1.6.0.tgz#34b72ed342dc9b15021d077ff8faeafe52146159"
+  integrity sha1-NLcu00LcmxUCHQd/+Prq/lIUYVk=
+
 "@vuepress/core@^1.0.3":
   version "1.8.2"
   resolved "https://registry.yarnpkg.com/@vuepress/core/-/core-1.8.2.tgz#4f5bafc894691bfea4146294a582a129483daf2a"
@@ -1143,12 +1158,12 @@
   dependencies:
     cross-spawn "^6.0.5"
 
-"@vuepress/plugin-medium-zoom@^1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@vuepress/plugin-medium-zoom/-/plugin-medium-zoom-1.8.2.tgz#0243dd27edf0c710f9a41a234d253d76ab51e625"
-  integrity sha512-Mljso/8E6IbNmIKmwKeC6FDfnhKY3fsOUSs5kEGzz3RQwd54eshqHAMRVwW4LZkYZHhwQXF8+qk7YqoMZB7jjg==
+"@vuepress/plugin-medium-zoom@1.0.0-alpha.0":
+  version "1.0.0-alpha.0"
+  resolved "https://registry.npm.taobao.org/@vuepress/plugin-medium-zoom/download/@vuepress/plugin-medium-zoom-1.0.0-alpha.0.tgz#efb6bd10d41c64161e3e25d6108fe527ebd4abad"
+  integrity sha1-77a9ENQcZBYePiXWEI/lJ+vUq60=
   dependencies:
-    medium-zoom "^1.0.4"
+    medium-zoom "^0.4.0"
 
 "@vuepress/plugin-nprogress@1.8.2":
   version "1.8.2"
@@ -5225,10 +5240,10 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
-medium-zoom@^1.0.4:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/medium-zoom/-/medium-zoom-1.0.6.tgz#9247f21ca9313d8bbe9420aca153a410df08d027"
-  integrity sha512-UdiUWfvz9fZMg1pzf4dcuqA0W079o0mpqbTnOz5ip4VGYX96QjmbM+OgOU/0uOzAytxC0Ny4z+VcYQnhdifimg==
+medium-zoom@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.npm.taobao.org/medium-zoom/download/medium-zoom-0.4.0.tgz#8e13c9b754903c0c903220611af0d3cd373a4222"
+  integrity sha1-jhPJt1SQPAyQMiBhGvDTzTc6QiI=
 
 memory-fs@^0.4.1:
   version "0.4.1"
@@ -5530,10 +5545,10 @@ node-releases@^1.1.70:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.71.tgz#cb1334b179896b1c89ecfdd4b725fb7bbdfc7dbb"
   integrity sha512-zR6HoT6LrLCRBwukmrVbHv0EpEQjksO6GmFcZQQuCAy139BEsoVKPYnf3jongYW83fAa1torLGYwxxky/p28sg==
 
-nodemon@^2.0.7:
+nodemon@^2.0.4:
   version "2.0.7"
-  resolved "https://registry.yarnpkg.com/nodemon/-/nodemon-2.0.7.tgz#6f030a0a0ebe3ea1ba2a38f71bf9bab4841ced32"
-  integrity sha512-XHzK69Awgnec9UzHr1kc8EomQh4sjTQ8oRf8TsGrSmHDx9/UmiGG9E/mM3BuTfNeFwdNBvrqQq/RHL0xIeyFOA==
+  resolved "https://registry.npm.taobao.org/nodemon/download/nodemon-2.0.7.tgz?cache=0&sync_timestamp=1609943626624&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fnodemon%2Fdownload%2Fnodemon-2.0.7.tgz#6f030a0a0ebe3ea1ba2a38f71bf9bab4841ced32"
+  integrity sha1-bwMKCg6+PqG6Kjj3G/m6tIQc7TI=
   dependencies:
     chokidar "^3.2.2"
     debug "^3.2.6"
@@ -8125,6 +8140,16 @@ vuepress-plugin-container@^2.0.2:
   dependencies:
     "@vuepress/shared-utils" "^1.2.0"
     markdown-it-container "^2.0.0"
+
+vuepress-plugin-cursor-effects@0.0.4:
+  version "0.0.4"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-cursor-effects/download/vuepress-plugin-cursor-effects-0.0.4.tgz#f8596c9b90da314d46571fc11f11b6b6f634d4a8"
+  integrity sha1-+Flsm5DaMU1GVx/BHxG2tvY01Kg=
+
+vuepress-plugin-dynamic-title@0.0.5:
+  version "0.0.5"
+  resolved "https://registry.npm.taobao.org/vuepress-plugin-dynamic-title/download/vuepress-plugin-dynamic-title-0.0.5.tgz#32b2c6f381c94aa7b247a9833c63c055300463d6"
+  integrity sha1-MrLG84HJSqeyR6mDPGPAVTAEY9Y=
 
 vuepress-plugin-flowchart@^1.4.3:
   version "1.4.3"
