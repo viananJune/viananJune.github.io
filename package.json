@@ -1,10 +1,10 @@
 {
-  "name": "afternoon-grocery-store",
+  "name": "vianan",
   "version": "1.0.0",
-  "description": "recoluan's blog",
+  "description": "vianan's blog",
   "main": "index.js",
   "repository": "http://recoluan.gitlab.io",
-  "author": "reco_luan",
+  "author": "vianan",
   "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
