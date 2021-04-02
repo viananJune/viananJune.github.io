@@ -1,0 +1,14 @@
+formatData(arr) {
+      if (!arr || !arr.length) return;
+      let res = [];
+      arr.forEach((v, i) => {
+        if (v.children && !!v.children.length) {
+          let children = this.getTreeFormatData(v.children);
+          v.children = children;
+        } else {
+          delete v.children;
+        }
+        res.push(v);
+      });
+      return res;
+    }

@@ -3,7 +3,7 @@ title: About 关于
 tags:
   - 关于
   - 作者
-date: 2021-4-1
+date: 2021-04-01
 isComment: false
 sidebar: false
 ---
@@ -19,7 +19,7 @@ sidebar: false
 
 ## Vianan
 
-一名 前端工程师， 毕业于郑州大学，在郑州深耕。
+一名 前端工程师， 毕业于郑州大学，在郑州深耕，致力于成为一名前端技术专家。
 
 ## License
 
