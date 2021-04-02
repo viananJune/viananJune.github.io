@@ -1,7 +1,7 @@
 const themeConfig = require("./config/theme/")
 
 module.exports = {
-  base: "/blog/",
+  base: "",
   title: "欢迎来到七叶的世界",
   description:
     "一叶是希望,二叶是信念，三叶是祈求，四叶是幸福，五叶是幸运，六叶是浪漫，七叶是爱情",
@@ -81,18 +81,21 @@ module.exports = {
       {
         showIcon: "/favicon.ico",
         showText: "(/≧▽≦/)老板好！",
-        hideIcon: "/failure.ico",
+        // hideIcon: "/failure.ico",
         hideText: "(●—●)快快回来！",
         recoverTime: 2000,
       },
     ],
-    // ['@vuepress-reco/comments', {
-    //   solution: 'valine',
-    //   options: {
-    //     appId: 'vcfdlxv9vEKeHDQT1bEaLVaG-gzGzoHsz',// your appId
-    //     appKey: 'E0Ae8xnQUmiCUesRH42CA48H', // your appKey
-    //   }
-    // }],
+    // [
+    //   "@vuepress-reco/comments",
+    //   {
+    //     solution: "valine",
+    //     options: {
+    //       appId: "vcfdlxv9vEKeHDQT1bEaLVaG-gzGzoHsz", // your appId
+    //       appKey: "E0Ae8xnQUmiCUesRH42CA48H", // your appKey
+    //     },
+    //   },
+    // ],
     [
       "@vuepress-reco/vuepress-plugin-bulletin-popover",
       {
