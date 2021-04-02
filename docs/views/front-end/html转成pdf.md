@@ -1,6 +1,5 @@
 ---
-title:前端实现 HTML 转 PDF 下载的两种方式
-
+title: 前端实现 HTML 转 PDF 下载的两种方式
 date: 2021-03-18 12:00:00
 tags:
   - html pdf

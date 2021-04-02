@@ -1,6 +1,5 @@
 ---
-title:同时配置github和gitlab
-
+title: 同时配置github和gitlab
 date: 2021-03-13 12:00:00
 tags:
   - github

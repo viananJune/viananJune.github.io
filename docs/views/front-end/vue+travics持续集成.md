@@ -1,10 +1,10 @@
 ---
 title: VuePress + Travis CI + Github Pages搭建个人博客
-date: 2022-04-02
+date: 2021-04-02
 tags:
   - 持续集成
 categories:
-  - 持续集成
+  - front-end
 sidebar: false
 ---
 
