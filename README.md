@@ -7,7 +7,7 @@
  * @FilePath: \blog\blog\README.md
 -->
 
-# vianan's blog [website](https://viananjune.github.io/blog/)
+# vianan's blog [website](https://viananjune.github.io)
 
 - Name: vianan
 - Github: https://github.com/viananJune/blog
