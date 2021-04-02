@@ -1,5 +1,16 @@
-function   checkIntersection (a, b) {
-      var ax = a.offsetLeft;
+---
+title: 判断两个div是否相交
+
+date: 2021-03-10 12:00:00
+tags:
+  - function
+categories:
+  - front-end
+---
+
+```
+function checkIntersection (a, b) {
+var ax = a.offsetLeft;
 
       var ay = a.offsetTop;
 
@@ -16,4 +27,5 @@ function   checkIntersection (a, b) {
       var bh = b.offsetHeight;
       return (Math.abs((bx + bw) - (aw + ax)) + Math.abs(bx - aw) < (aw + bw) &&
         Math.abs((by + bh) - (ah + ay)) + Math.abs(by - ah) < (ah + bh));
-    },
+    }
+```

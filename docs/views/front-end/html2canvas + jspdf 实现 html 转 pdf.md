@@ -1,3 +1,13 @@
+---
+title:html2canvas + jspdf 实现 html 转 pdf
+
+date: 2021-03-17 12:00:00
+tags:
+  - html pdf
+categories:
+  - front-end
+---
+
 # [html2canvas + jspdf 实现 html 转 pdf](https://www.cnblogs.com/cmyoung/p/11609996.html)
 
 在前端开发中， html 转 pdf 是最常见的需求，实现这块需求的开发 html2canvas 和 jspdf 是最常用的两个插件，插件都是现成的，但是有时候用不好，也不出现很多头疼问题：
@@ -8,15 +18,11 @@
 
 3.页面较宽或较长时，或出现生成的 pdf 内容不全的情况。
 
- 
-
 如果你在项目中出现以上情况，那么不着急，往下看就对了，下面的代码统统为你解决了
 
 话不多说，直接上代码：
 
- 
-
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
+[![复制代码](https://common.cnblogs.com/images/copycode.gif)](<javascript:void(0);>)
 
 ```
 /*
@@ -117,9 +123,7 @@ export default async (html, isOne) => {
 }
 ```
 
-[![复制代码](https://common.cnblogs.com/images/copycode.gif)](javascript:void(0);)
-
- 
+[![复制代码](https://common.cnblogs.com/images/copycode.gif)](<javascript:void(0);>)
 
 以上方法支持，生成的 pdf 为 单页或多页可选，如果不是需求必须是多页的，建议都选择生成 单页的，为什么呢？
 
@@ -127,20 +131,12 @@ export default async (html, isOne) => {
 
 但是，如果内容过长超过 14400 的话，那么你会发现 14400 之外的内容获取不到了，这是为什么呢？看来 jspdf 的源码之后找到答案，源码里面有限制：
 
- ![img](https://img2018.cnblogs.com/blog/1057407/201909/1057407-20190929204322414-1180600295.png)
+![img](https://img2018.cnblogs.com/blog/1057407/201909/1057407-20190929204322414-1180600295.png)
 
- 
-
- 不过，我的代码里已经解决过长的问题（宽度一般不会超过，特殊场景暂不考虑），超过 14400 时，按照高度就为 14400 来算缩放比例，宽度按比例缩放好像就行了，这就完事了？
+不过，我的代码里已经解决过长的问题（宽度一般不会超过，特殊场景暂不考虑），超过 14400 时，按照高度就为 14400 来算缩放比例，宽度按比例缩放好像就行了，这就完事了？
 
 不不不，好像还有坑，就是 orientation ，有两个值 "portrait" or "landscape"，默认是 'p', 当 orientation = 'p' 且 width > height 时， 他默认会把 width 和 height 值交换，如果你不想要他交换，那么当你的 width > height 时，你把 orientation 动态改为 'l' 即可，反之亦然。
 
- 
-
 ![img](https://img2018.cnblogs.com/blog/1057407/201909/1057407-20190929205457859-1507713517.png)
-
- 
-
- 
 
 以上希望对你有用，谢谢！

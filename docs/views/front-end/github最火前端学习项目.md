@@ -1,3 +1,13 @@
+---
+title:git最火前端项目
+
+date: 2021-03-16 12:00:00
+tags:
+  - github
+categories:
+  - front-end
+---
+
 ![img](https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/05181d70d8474d7dab758b1d51bd8aff~tplv-k3u1fbpfcp-watermark.image)
 
 # 猛增 110K Star！年增长数最多的 10 大顶级前端学习资源项目！
@@ -28,7 +38,7 @@
 
 算法范式包含了：BF 算法、贪心法、分治法、动态编程、回溯法、Branch & Bound 等等。
 
-这项目还出了对应的教学视频，总共 81 个视频讲解，每个视频大概 5 - 10分钟左右，还能学习英语哦 😉
+这项目还出了对应的教学视频，总共 81 个视频讲解，每个视频大概 5 - 10 分钟左右，还能学习英语哦 😉
 
 ![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2427035293544daa81b2ef48d6746053~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -106,16 +116,16 @@ TL;DR: 使用回调的方式处理异步错误可能是导致灾难的最快的�
 Bad：
 
 ```js
-getUserInfo(); 
-getClientData(); 
-getCustomerRecord();
+getUserInfo()
+getClientData()
+getCustomerRecord()
 复制代码
 ```
 
 Good：
 
 ```js
-getUser();
+getUser()
 复制代码
 ```
 
@@ -130,7 +140,7 @@ Bad:
 ```js
 //525600到底啥意思？
 for (var i = 0; i < 525600; i++) {
-  runCronJob();
+  runCronJob()
 }
 复制代码
 ```
@@ -139,9 +149,9 @@ Good:
 
 ```js
 // 声明为全局变量
-var MINUTES_IN_A_YEAR = 525600;
+var MINUTES_IN_A_YEAR = 525600
 for (var i = 0; i < MINUTES_IN_A_YEAR; i++) {
-  runCronJob();
+  runCronJob()
 }
 复制代码
 ```
@@ -165,40 +175,40 @@ for (var i = 0; i < MINUTES_IN_A_YEAR; i++) {
 Array.prototype.map()
 
 ```js
-const arr = [1, 2, 3];
-const double = x => x * 2;
-arr.map(double); // [2, 4, 6]
+const arr = [1, 2, 3]
+const double = (x) => x * 2
+arr.map(double) // [2, 4, 6]
 复制代码
 ```
 
 Array.prototype.filter()
 
 ```js
-const arr = [1, 2, 3];
-const isOdd = x => x % 2 === 1;
-arr.filter(isOdd); // [1, 3]
+const arr = [1, 2, 3]
+const isOdd = (x) => x % 2 === 1
+arr.filter(isOdd) // [1, 3]
 复制代码
 ```
 
 Array.prototype.reduce()
 
 ```js
-const arr = [1, 2, 3];
+const arr = [1, 2, 3]
 
-const sum = (x, y) => x + y;
-arr.reduce(sum, 0); // 6
+const sum = (x, y) => x + y
+arr.reduce(sum, 0) // 6
 
-const increment = (x, y) => [...x, x[x.length - 1] + y];
-arr.reduce(increment, [0]); // [0, 1, 3, 6]
+const increment = (x, y) => [...x, x[x.length - 1] + y]
+arr.reduce(increment, [0]) // [0, 1, 3, 6]
 复制代码
 ```
 
 Array.prototype.find()
 
 ```js
-const arr = [1, 2, 3];
-const isOdd = x => x % 2 === 1;
-arr.find(isOdd); // 1
+const arr = [1, 2, 3]
+const isOdd = (x) => x % 2 === 1
+arr.find(isOdd) // 1
 复制代码
 ```
 
@@ -208,35 +218,36 @@ arr.find(isOdd); // 1
 
 ```js
 const sleepSync = (ms) => {
-  const end = new Date().getTime() + ms;
-  while (new Date().getTime() < end) { /* do nothing */ }
+  const end = new Date().getTime() + ms
+  while (new Date().getTime() < end) {
+    /* do nothing */
+  }
 }
 
 const printNums = () => {
-  console.log(1);
-  sleepSync(500);
-  console.log(2);
-  console.log(3);
-};
+  console.log(1)
+  sleepSync(500)
+  console.log(2)
+  console.log(3)
+}
 
-printNums(); // Logs: 1, 2, 3 (2 and 3 log after 500ms)
+printNums() // Logs: 1, 2, 3 (2 and 3 log after 500ms)
 复制代码
 ```
 
 异步版本
 
 ```js
-const sleep = (ms) =>
-  new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const printNums = async() => {
-  console.log(1);
-  await sleep(500);
-  console.log(2);
-  console.log(3);
-};
+const printNums = async () => {
+  console.log(1)
+  await sleep(500)
+  console.log(2)
+  console.log(3)
+}
 
-printNums(); // Logs: 1, 2, 3 (2 and 3 log after 500ms)
+printNums() // Logs: 1, 2, 3 (2 and 3 log after 500ms)
 复制代码
 ```
 
@@ -264,11 +275,11 @@ printNums(); // Logs: 1, 2, 3 (2 and 3 log after 500ms)
 
 ![img](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/30ce0d80931840968244a63dafc6c00a~tplv-k3u1fbpfcp-zoom-1.image)
 
-技术人员求职面试，单刷leetcode上的大厂题库可能还不够。
+技术人员求职面试，单刷 leetcode 上的大厂题库可能还不够。
 
-简历怎么写才能吸引HR的眼光，可能会被技术老大问到哪些常见问题，拿到Offer之后怎样才能让自己的优势最大化然后优中选优？
+简历怎么写才能吸引 HR 的眼光，可能会被技术老大问到哪些常见问题，拿到 Offer 之后怎样才能让自己的优势最大化然后优中选优？
 
-面对这些赤果果的问题，目前就职于Facebook的新加坡小哥Yangshun Tay就整理了一份干货。
+面对这些赤果果的问题，目前就职于 Facebook 的新加坡小哥 Yangshun Tay 就整理了一份干货。
 
 面试全流程需要注意的事项都在里面了，包含从简历准备、面经和谈判全过程，教你如何避雷不踩坑。
 
@@ -354,9 +365,9 @@ FCC 涵盖 HTML5、CSS、React、JavaScript、Database 等课程，游戏化程�
 
 平时如何发现好的开源项目，可以看看这篇文章：[GitHub 上能挖矿的神仙技巧 - 如何发现优秀开源项目](https://github.com/biaochenxuying/blog/issues/45)
 
-欢迎关注公众号：[**前端GitHub**](https://github.com/FrontEndGitHub/FrontEndGitHub)，专注于挖掘优秀的前端开源项目，抹平你的前端信息不对称，致力于打造最优质的前端开源项目资源库。
+欢迎关注公众号：[**前端 GitHub**](https://github.com/FrontEndGitHub/FrontEndGitHub)，专注于挖掘优秀的前端开源项目，抹平你的前端信息不对称，致力于打造最优质的前端开源项目资源库。
 
-微信搜 “**前端GitHub**”，回复 “**电子书**” 即可以获得上面 **160** 本前端精华书籍哦，猫哥 WX：**CB834301747** 。
+微信搜 “**前端 GitHub**”，回复 “**电子书**” 即可以获得上面 **160** 本前端精华书籍哦，猫哥 WX：**CB834301747** 。
 
 **往期精文**
 
